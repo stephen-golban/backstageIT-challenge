@@ -1,0 +1,25 @@
+{
+  "title": "MIISTA | Commerce - Powered by Ask Phill",
+  "titleTemplate": "%s - MIISTA Commerce",
+  "description": "Ask Phill - https://localhost:3000",
+  "openGraph": {
+    "title": "MIISTA Commerce | Powered by Ask Phill",
+    "description": "Ask Phill - https://localhost:3000",
+    "type": "website",
+    "url": "https://localhost:3000",
+    "site_name": "Ask Phill",
+    "images": [
+      {
+        "url": "/card.png",
+        "width": "800",
+        "height": "600",
+        "alt": "Ask Phill"
+      }
+    ]
+  },
+  "twitter": {
+    "handle": "@ask_phil",
+    "site": "@ask_phil",
+    "cardType": "summary_large_image"
+  }
+}
