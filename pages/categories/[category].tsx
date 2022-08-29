@@ -1,5 +1,5 @@
 import React from 'react';
-import db from '../../database/categories.json';
+import categories from '../../database/categories.json';
 
 import { fetcher } from '@miista/lib';
 import { useProducts } from '@miista/lib/hooks';
@@ -33,9 +33,7 @@ const Category: NextPage<{ data: DataType[] }> = ({ data }) => {
 };
 
 export const getStaticPaths = async () => {
-  // const categories: string[] = await fetcher(`${process.env.BASE_LINK}/api/categories`);
-
-  const paths = db.data.map((category) => {
+  const paths = categories.data.map((category) => {
     return { params: { category } };
   });
 
