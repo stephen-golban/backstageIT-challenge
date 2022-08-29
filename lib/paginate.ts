@@ -14,8 +14,8 @@ export const paginate = <T>(array: T[], perPageItems: number, pageIndex: number)
   let page = pageIndex || 1,
     per_page = perPageItems || 10,
     offset = (page - 1) * per_page,
-    paginatedItems = array.slice(offset).slice(0, perPageItems),
-    total_pages = Math.ceil(array.length / per_page);
+    paginatedItems = array?.slice(offset).slice(0, perPageItems),
+    total_pages = Math.ceil(array?.length / per_page);
 
   return {
     pageIndex: page,
@@ -23,7 +23,7 @@ export const paginate = <T>(array: T[], perPageItems: number, pageIndex: number)
     per_page: per_page,
     pre_page: page - 1 ? page - 1 : null,
     next_page: total_pages > page ? page + 1 : null,
-    total: array.length,
+    total: array?.length,
     total_pages: total_pages,
   };
 };
