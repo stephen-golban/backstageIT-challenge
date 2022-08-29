@@ -1,16 +1,14 @@
 import React from 'react';
 
 import * as S from './Layout.styles';
-import { Navbar } from '@miista/components/ui';
-import Box from '../Box/Box';
+import { Hero, Navbar } from '@miista/components/ui';
 
 const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <S.Container>
-      <Box height="auto" position="absolute">
+      <Hero>
         <Navbar />
-      </Box>
-
+      </Hero>
       <S.Main>{children}</S.Main>
     </S.Container>
   );

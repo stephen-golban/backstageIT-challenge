@@ -10,6 +10,9 @@ export default async function getProducts(_req: NextApiRequest, res: NextApiResp
   //Read the json data file data.json
   const fileContents = await fs.readFile(jsonDirectory + '/data.json', 'utf8');
   //Return the content of the data file in json format
+
+  const data: [] = JSON.parse(fileContents).data.allContentfulProductPage.edges;
+
   await sleep(1000);
-  return await res.status(200).json(JSON.parse(fileContents).data.allContentfulProductPage.edges);
+  return res.status(200).json(data);
 }
