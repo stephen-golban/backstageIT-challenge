@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { fetcher } from '@miista/lib';
+import useSWR from 'swr';
 import { useProducts } from '@miista/lib/hooks';
 
 import { Paginator } from '@miista/components/common';
@@ -12,10 +12,11 @@ interface IIndexProps {
   data: DataType[];
 }
 
-const Index: NextPage<IIndexProps> = ({ data }) => {
+const Index: NextPage<IIndexProps> = ({}) => {
+  const { data, error } = useSWR('/api/products/all');
   const [products, { goToNextPage, goToPrevPage, goToIndex, isLoading, pageIndex }] = useProducts(data);
 
-  if (!products) {
+  if (!data || error) {
     return <div>loading...</div>;
   }
 
@@ -36,11 +37,6 @@ const Index: NextPage<IIndexProps> = ({ data }) => {
       </Paginator>
     </React.Fragment>
   );
-};
-
-export const getStaticProps = async () => {
-  const data = await fetcher(`${process.env.BASE_LINK}/api/products/all`);
-  return { props: { data } };
 };
 
 export default Index;

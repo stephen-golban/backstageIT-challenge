@@ -8,11 +8,13 @@ import { Paginator } from '@miista/components/common';
 
 import { DataType } from '@miista/typings/database';
 import { GetStaticPropsContext, NextPage } from 'next';
+import useSWR from 'swr';
 
-const Category: NextPage<{ data: DataType[] }> = ({ data }) => {
+const Category: NextPage<{ category: string }> = ({ category }) => {
+  const { data, error } = useSWR(`/api/products/${category}`);
   const [products, { goToNextPage, goToPrevPage, goToIndex, isLoading, pageIndex }] = useProducts(data);
 
-  if (!products) {
+  if (!data || error) {
     return <div>loading...</div>;
   }
 
@@ -42,9 +44,8 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context: GetStaticPropsContext) => {
   const category = String(context.params?.category);
-  const data = await fetcher(`${process.env.BASE_LINK}/api/products/${category}`);
 
-  return { props: { data } };
+  return { props: { category } };
 };
 
 export default Category;

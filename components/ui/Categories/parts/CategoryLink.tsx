@@ -11,8 +11,8 @@ interface ICategoryLinkProps {
 
 const CategoryLink: React.FC<ICategoryLinkProps> = ({ category }) => {
   const { query, pathname } = useRouter();
-  const isPathMatching =
-    String(query.category).replace('-', ' ') === category || (category === 'all' && pathname === '/');
+
+  const isPathMatching = query.category === category || (category === 'all' && pathname === '/');
 
   return (
     <Button
