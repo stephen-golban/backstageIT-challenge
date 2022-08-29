@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: ['images.ctfassets.net'],
+  images: { domains: ['images.ctfassets.net'] },
   reactStrictMode: true,
   swcMinify: true,
 };

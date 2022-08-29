@@ -12,7 +12,7 @@ import { Categories, Filter } from '@miista/components/ui';
 interface IAppProps extends AppProps {
   categories: string[];
 }
-function App({ Component, pageProps, categories }: IAppProps) {
+function App({ Component, pageProps }: IAppProps) {
   return (
     <React.Fragment>
       <Head />
@@ -23,7 +23,7 @@ function App({ Component, pageProps, categories }: IAppProps) {
       >
         <Layout>
           <Filter.Provider>
-            <Categories categories={categories}>
+            <Categories>
               <Filter />
             </Categories>
             <Component {...pageProps} />
@@ -33,10 +33,5 @@ function App({ Component, pageProps, categories }: IAppProps) {
     </React.Fragment>
   );
 }
-
-App.getInitialProps = async () => {
-  const categories: string[] = await fetcher('http://localhost:3000/api/categories');
-  return { categories };
-};
 
 export default App;

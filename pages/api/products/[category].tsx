@@ -16,7 +16,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const { category } = req.query;
   const mockData = db.data.allContentfulProductPage.edges;
 
+  if (category === 'all') {
+    return res.status(200).json(mockData);
+  }
+
   const filteredProducts = getProductsFilteredByCategory(String(category), mockData);
 
-  return res.status(200).json(category === 'all' ? mockData : filteredProducts);
+  return res.status(200).json(filteredProducts);
 }

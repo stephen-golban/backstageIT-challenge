@@ -22,7 +22,7 @@ const CategoryLink: React.FC<ICategoryLinkProps> = ({ category }) => {
       letterSpacing="1px"
       className={`uppercase mx-3 ${isPathMatching ? 'underline' : 'hover:underline'} transition-all`}
     >
-      <Link passHref href={category === 'all' ? '/' : `/categories/${category.replace(' ', '-')}`} scroll={false}>
+      <Link passHref href={category === 'all' ? '/' : `/categories/${category}`} scroll={false}>
         {category}
       </Link>
     </Button>

@@ -39,7 +39,7 @@ const Index: NextPage<IIndexProps> = ({ data }) => {
 };
 
 export const getStaticProps = async () => {
-  const data = await fetcher('http://localhost:3000/api/products/all');
+  const data = await fetcher(`${process.env.BASE_LINK}/api/products/all`);
   return { props: { data } };
 };
 

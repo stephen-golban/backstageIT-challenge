@@ -32,17 +32,18 @@ const Category: NextPage<{ data: DataType[] }> = ({ data }) => {
 };
 
 export const getStaticPaths = async () => {
-  const categories: string[] = await fetcher('http://localhost:3000/api/categories');
+  const categories: string[] = await fetcher(`${process.env.BASE_LINK}/api/categories`);
+
   const paths = categories.map((category) => {
     return { params: { category } };
   });
 
-  return { paths, fallback: 'blocking' };
+  return { paths, fallback: false };
 };
 
 export const getStaticProps = async (context: GetStaticPropsContext) => {
   const category = String(context.params?.category);
-  const data = await fetcher(`http://localhost:3000/api/products/${category}`);
+  const data = await fetcher(`${process.env.BASE_LINK}/api/products/${category}`);
 
   return { props: { data } };
 };
