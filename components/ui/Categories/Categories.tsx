@@ -19,7 +19,7 @@ const Categories: React.FC<ICategoriesProps> = ({ children }) => {
       <div />
       <Box maxWidth={850}>
         {data.map((category: string, index: number) => (
-          <CategoryLink key={`category-item-${category}-${index}`} category={category.replace('-', ' ')} />
+          <CategoryLink key={`category-item-${category}-${index}`} category={category} />
         ))}
       </Box>
       {children}

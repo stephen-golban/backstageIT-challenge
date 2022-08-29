@@ -1,6 +1,6 @@
 import React from 'react';
 
-import useFilter from './parts/useFilter';
+import useFilter from './useFilter';
 import { sleep } from '@miista/lib/sleep';
 import { paginate, PaginateResult } from '@miista/lib/paginate';
 
